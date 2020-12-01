@@ -8,9 +8,9 @@ def product_of_records(number_of_records):
     records = list(map(int, f.read().splitlines()))
     f.close()
     combinations = list(itertools.combinations(records, number_of_records))
-    for i in combinations:
-        if sum(i) == 2020:
-            return reduce(mul, i, 1)
+    for combination in combinations:
+        if sum(combination) == 2020:
+            return reduce(mul, combination, 1)
 
 
 print("Part one:", product_of_records(2))
