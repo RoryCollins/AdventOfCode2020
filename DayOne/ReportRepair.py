@@ -10,7 +10,7 @@ def product_of_records(number_of_records, records):
 
 
 def read_expense_records():
-    f = open("expenseReport.txt")
+    f = open("expenseReport.txt", "r")
     records = list(map(int, f.read().splitlines()))
     f.close()
     return records

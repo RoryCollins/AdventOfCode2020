@@ -1,7 +1,7 @@
 from functools import reduce
 from operator import mul
 
-f = open("geography.txt")
+f = open("geography.txt", "r")
 lines = f.read().splitlines()
 f.close()
 width = len(lines[0])

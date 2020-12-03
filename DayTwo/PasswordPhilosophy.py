@@ -2,7 +2,7 @@ from DayTwo.Password import Password
 
 
 def read_passwords():
-    f = open("passwords.txt")
+    f = open("passwords.txt", "r")
     password_records = f.read().splitlines()
     f.close()
     return list(map(Password, password_records))
