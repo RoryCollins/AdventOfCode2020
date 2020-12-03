@@ -1,4 +1,4 @@
-from DayTwo.Password import Password
+from Day2.Password import Password
 
 
 def read_passwords():
