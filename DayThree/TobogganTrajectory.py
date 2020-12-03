@@ -1,19 +1,19 @@
 f = open("geography.txt")
 lines = f.read().splitlines()
 f.close()
+width = len(lines[0])
+height = len(lines) - 1
 
 
 def check_slope(right, down):
-    x_position = 0
-    y_position = 0
-    trees = 0
-    while y_position <= len(lines) - 1:
-        line = lines[y_position]
-        if line[x_position] == '#':
-            trees += 1
-        x_position = (x_position + right) % len(line)
-        y_position += down
-    return trees
+    return recursive_check_slope(right, down, 0, 0, 0)
+
+
+def recursive_check_slope(right, down, x, y, trees):
+    if y > height:
+        return trees
+    total_trees_hit = (trees + 1) if lines[y][x] == '#' else trees
+    return recursive_check_slope(right, down, (x + right) % width, y + down, total_trees_hit)
 
 
 route_one = check_slope(1, 1)
