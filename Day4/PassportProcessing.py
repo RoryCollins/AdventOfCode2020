@@ -1,5 +1,4 @@
 import re
-
 from . import BirthYearValidator, IssueYearValidator, ExpirationYearValidator, HairColourValidator, \
     EyeColourValidator, PassportIdValidator, HeightValidator
 

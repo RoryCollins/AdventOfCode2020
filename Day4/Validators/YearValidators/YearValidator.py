@@ -13,5 +13,3 @@ class YearValidator(Validator):
         return \
             re.match(r"(\d){4}", self.value) is not None and \
             self.min_year <= int(self.value) <= self.max_year
-
-
