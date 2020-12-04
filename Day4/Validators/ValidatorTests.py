@@ -1,7 +1,8 @@
 import unittest
 from . import BirthYearValidator, HeightValidator, PassportIdValidator, HairColourValidator, EyeColourValidator
 
-class MyTestCase(unittest.TestCase):
+
+class ValidatorTests(unittest.TestCase):
     def test_valid_birth_year(self):
         self.assertEqual(BirthYearValidator("2002").is_valid(), True)
         self.assertEqual(BirthYearValidator("1920").is_valid(), True)
