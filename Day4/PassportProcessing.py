@@ -1,6 +1,6 @@
 import re
 
-from Day4.Validators import BirthYearValidator, IssueYearValidator, ExpirationYearValidator, HairColourValidator, \
+from . import BirthYearValidator, IssueYearValidator, ExpirationYearValidator, HairColourValidator, \
     EyeColourValidator, PassportIdValidator, HeightValidator
 
 f = open("passport_records.txt", "r")

@@ -1,8 +1,5 @@
 import unittest
-
-from Day4.Validators import BirthYearValidator, HeightValidator, HairColourValidator, EyeColourValidator, \
-    PassportIdValidator
-
+from . import BirthYearValidator, HeightValidator, PassportIdValidator, HairColourValidator, EyeColourValidator
 
 class MyTestCase(unittest.TestCase):
     def test_valid_birth_year(self):

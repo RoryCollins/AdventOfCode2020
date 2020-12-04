@@ -1,0 +1,8 @@
+from .YearValidators.BirthYearValidator import BirthYearValidator
+from .YearValidators.IssueYearValidator import IssueYearValidator
+from .YearValidators.ExpirationYearValidator import ExpirationYearValidator
+from .HeightValidator import HeightValidator
+from .EyeColourValidator import EyeColourValidator
+from .PassportIdValidator import PassportIdValidator
+from .HairColourValidator import HairColourValidator
+
