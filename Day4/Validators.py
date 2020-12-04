@@ -16,14 +16,14 @@ class Validator(ABC):
 
 class YearValidator(Validator):
     def __init__(self, min_year, max_year, value):
-        self.min = min_year
-        self.max = max_year
+        self.min_year = min_year
+        self.max_year = max_year
         super().__init__(value)
 
     def additional_validation(self):
         return \
             re.match(r"(\d){4}", self.value) is not None and \
-            self.min <= int(self.value) <= self.max
+            self.min_year <= int(self.value) <= self.max_year
 
 
 class BirthYearValidator(YearValidator):
@@ -52,7 +52,13 @@ class ExpirationYearValidator(YearValidator):
 
 class HeightValidator(Validator):
     def additional_validation(self):
-        return re.match(r"^(1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in$", self.value) is not None
+        return self.is_between_150_and_196_cm() or self.is_between_59_and_76_in()
+
+    def is_between_150_and_196_cm(self):
+        return re.match(r"^(1[5-8][0-9]|19[0-3])cm$", self.value) is not None
+
+    def is_between_59_and_76_in(self):
+        return re.match(r"^(59|6[0-9]|7[0-6])in$", self.value) is not None
 
 
 class HairColourValidator(Validator):
@@ -61,10 +67,9 @@ class HairColourValidator(Validator):
 
 
 class EyeColourValidator(Validator):
-    valid_colours = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
-
     def additional_validation(self):
-        return self.value in self.valid_colours
+        valid_colours = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
+        return self.value in valid_colours
 
 
 class PassportIdValidator(Validator):
