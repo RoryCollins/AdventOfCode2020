@@ -1,5 +1,5 @@
 import re
-from . import BirthYearValidator, IssueYearValidator, ExpirationYearValidator, HairColourValidator, \
+from Day4 import BirthYearValidator, IssueYearValidator, ExpirationYearValidator, HairColourValidator, \
     EyeColourValidator, PassportIdValidator, HeightValidator
 
 f = open("passport_records.txt", "r")
@@ -23,13 +23,5 @@ class Passport:
         ]
         return all(map(lambda x: x.is_valid(), validators))
 
-    def validate_item(self, item):
-        return self.record.get(item) is not None
 
-    def validate_byr(self):
-        byr = self.record.get("byr")
-        return byr is not None and 1920 <= int(byr) <= 2002
-
-
-part_one = sum(map(lambda x: Passport(x).validate(), records))
-print("Part one:", part_one)
+print("Valid Passports:", sum(map(lambda x: Passport(x).validate(), records)))
