@@ -9,13 +9,13 @@ class Passport:
         self.record = dict(re.findall(r"(\S+):(\S+)", record))
 
     def validate(self):
-        validators = [
-            BirthYearValidator(self.record.get("byr")),
-            IssueYearValidator(self.record.get("iyr")),
-            ExpirationYearValidator(self.record.get("eyr")),
-            HeightValidator(self.record.get("hgt")),
-            HairColourValidator(self.record.get("hcl")),
-            EyeColourValidator(self.record.get("ecl")),
-            PassportIdValidator(self.record.get("pid")),
+        valid_fields = [
+            BirthYearValidator().is_valid(self.record.get("byr")),
+            IssueYearValidator().is_valid(self.record.get("iyr")),
+            ExpirationYearValidator().is_valid(self.record.get("eyr")),
+            HeightValidator().is_valid(self.record.get("hgt")),
+            HairColourValidator().is_valid(self.record.get("hcl")),
+            EyeColourValidator().is_valid(self.record.get("ecl")),
+            PassportIdValidator().is_valid(self.record.get("pid")),
         ]
-        return all(map(lambda x: x.is_valid(), validators))
+        return all(valid_fields)
