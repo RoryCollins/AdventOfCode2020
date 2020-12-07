@@ -4,42 +4,43 @@ from . import BirthYearValidator, HeightValidator, PassportIdValidator, HairColo
 
 class ValidatorTests(unittest.TestCase):
     def test_valid_birth_year(self):
-        self.assertEqual(BirthYearValidator("2002").is_valid(), True)
-        self.assertEqual(BirthYearValidator("1920").is_valid(), True)
-        self.assertEqual(BirthYearValidator("1988").is_valid(), True)
+        birth_year_validator = BirthYearValidator()
+        self.assertEqual(birth_year_validator.is_valid(value="2002"), True)
+        self.assertEqual(BirthYearValidator().is_valid("1920"), True)
+        self.assertEqual(BirthYearValidator().is_valid("1988"), True)
 
     def test_invalid_birth_year(self):
-        self.assertEqual(BirthYearValidator(None).is_valid(), False)
-        self.assertEqual(BirthYearValidator("2003").is_valid(), False)
-        self.assertEqual(BirthYearValidator("1919").is_valid(), False)
-        self.assertEqual(BirthYearValidator("nineteen-ninety-four").is_valid(), False)
+        self.assertEqual(BirthYearValidator().is_valid(None), False)
+        self.assertEqual(BirthYearValidator().is_valid("2003"), False)
+        self.assertEqual(BirthYearValidator().is_valid("1919"), False)
+        self.assertEqual(BirthYearValidator().is_valid("nineteen-ninety-four"), False)
 
     def test_valid_height(self):
-        self.assertEqual(HeightValidator("160cm").is_valid(), True)
-        self.assertEqual(HeightValidator("60in").is_valid(), True)
+        self.assertEqual(HeightValidator().is_valid("160cm"), True)
+        self.assertEqual(HeightValidator().is_valid("60in"), True)
 
     def test_invalid_height(self):
-        self.assertEqual(HeightValidator("160in").is_valid(), False)
-        self.assertEqual(HeightValidator("160").is_valid(), False)
+        self.assertEqual(HeightValidator().is_valid("160in"), False)
+        self.assertEqual(HeightValidator().is_valid("160"), False)
 
     def test_valid_hair_colour(self):
-        self.assertEqual(HairColourValidator("#123abc").is_valid(), True)
+        self.assertEqual(HairColourValidator().is_valid("#123abc"), True)
 
     def test_invalid_hair_colour(self):
-        self.assertEqual(HairColourValidator("#123abz").is_valid(), False)
-        self.assertEqual(HairColourValidator("123abc").is_valid(), False)
+        self.assertEqual(HairColourValidator().is_valid("#123abz"), False)
+        self.assertEqual(HairColourValidator().is_valid("123abc"), False)
 
     def test_valid_eye_colour(self):
-        self.assertEqual(EyeColourValidator("brn").is_valid(), True)
+        self.assertEqual(EyeColourValidator().is_valid("brn"), True)
 
     def test_invalid_eye_colour(self):
-        self.assertEqual(EyeColourValidator("wat").is_valid(), False)
+        self.assertEqual(EyeColourValidator().is_valid("wat"), False)
 
     def test_valid_passport_id(self):
-        self.assertEqual(PassportIdValidator("000000001").is_valid(), True)
+        self.assertEqual(PassportIdValidator().is_valid("000000001"), True)
 
     def test_invalid_passport_id(self):
-        self.assertEqual(PassportIdValidator("0123456789").is_valid(), False)
+        self.assertEqual(PassportIdValidator().is_valid("0123456789"), False)
 
 
 if __name__ == '__main__':

@@ -1,8 +1,9 @@
 import re
 
-from Day4.Validators.Validator import Validator
+from Day4.Validators.ValidatorBase import ValidatorBase
 
 
-class HairColourValidator(Validator):
-    def additional_validation(self):
-        return re.match("^#[0-9a-f]{6}$", self.value) is not None
+class HairColourValidator(ValidatorBase):
+    @staticmethod
+    def additional_validation(value):
+        return re.match("^#[0-9a-f]{6}$", value) is not None

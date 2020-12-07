@@ -1,8 +1,9 @@
 import re
 
-from Day4.Validators.Validator import Validator
+from Day4.Validators.ValidatorBase import ValidatorBase
 
 
-class PassportIdValidator(Validator):
-    def additional_validation(self):
-        return re.match("^[0-9]{9}$", self.value) is not None
+class PassportIdValidator(ValidatorBase):
+    @staticmethod
+    def additional_validation(value):
+        return re.match("^[0-9]{9}$", value) is not None

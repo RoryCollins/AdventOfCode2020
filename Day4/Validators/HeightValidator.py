@@ -1,14 +1,16 @@
 import re
 
-from Day4.Validators.Validator import Validator
+from Day4.Validators.ValidatorBase import ValidatorBase
 
 
-class HeightValidator(Validator):
-    def additional_validation(self):
-        return self.is_between_150_and_193_cm() or self.is_between_59_and_76_in()
+class HeightValidator(ValidatorBase):
+    def additional_validation(self, value):
+        return self.is_between_150_and_193_cm(value) or self.is_between_59_and_76_in(value)
 
-    def is_between_150_and_193_cm(self):
-        return re.match(r"^(1[5-8][0-9]|19[0-3])cm$", self.value) is not None
+    @staticmethod
+    def is_between_150_and_193_cm(value):
+        return re.match(r"^(1[5-8][0-9]|19[0-3])cm$", value) is not None
 
-    def is_between_59_and_76_in(self):
-        return re.match(r"^(59|6[0-9]|7[0-6])in$", self.value) is not None
+    @staticmethod
+    def is_between_59_and_76_in(value):
+        return re.match(r"^(59|6[0-9]|7[0-6])in$", value) is not None
