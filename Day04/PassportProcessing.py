@@ -1,5 +1,5 @@
 import re
-from Day4.Passport import Passport
+from Day04.Passport import Passport
 
 f = open("passport_records.txt", "r")
 records = re.split("\n\n", f.read())

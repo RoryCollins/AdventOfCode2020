@@ -1,6 +1,6 @@
 import unittest
 
-from Day5.BinaryBoarding import find_seat_id, find_row_id, find_column_id
+from Day05.BinaryBoarding import find_seat_id, find_row_id, find_column_id
 
 
 class BinaryBoardingTests(unittest.TestCase):
